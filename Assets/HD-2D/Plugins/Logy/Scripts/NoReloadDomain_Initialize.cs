@@ -8,9 +8,12 @@ public class NoReloadDomain_Initialize<T> : Cache {
         if(_initializeEvent)
             return;
         _initializeEvent = true;
+        #if UNITY_EDITOR
         EditorApplication.playModeStateChanged += InitializeEvent;
+        #endif
     }
 
+    #if UNITY_EDITOR
     void InitializeEvent(PlayModeStateChange _stateChange) {
         if (_stateChange != PlayModeStateChange.ExitingEditMode)
             return;
@@ -20,6 +23,7 @@ public class NoReloadDomain_Initialize<T> : Cache {
         EditorApplication.playModeStateChanged -= InitializeEvent;
         Debug.Log($"{typeof(T).Name} Initialized");
     }
+    #endif
     
     protected virtual void Initialize() {
         _initializeEvent = false;

@@ -4,9 +4,10 @@ public class Character : MonoBehaviour {
     [field:SerializeField] public Inputer inputer { get; private set; }
     [field:SerializeField] public SpriteRenderer spriteRenderer { get; private set; }
     [field:SerializeField] public Move move { get; private set; }
-    
+    [field:SerializeField] public Animator animator { get; private set; }
 
     void Start() {
         move.Initialize(this);
+        animator.Initialize(this);
     }
 }

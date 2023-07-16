@@ -106998,7 +106998,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 522918695}
-  - component: {fileID: 522918696}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -107014,25 +107013,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 522918693}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.70710677, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &522918696
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 522918693}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0c2667a742e46f4ea4ca23164d1dc11, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &528976938
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -111811,10 +111798,13 @@ MonoBehaviour:
   <move>k__BackingField:
     <moveVector2>k__BackingField: {x: 0, y: 0}
     <currentSpeedPercentage>k__BackingField: 0
-    _speed: 2
+    <rigidbody>k__BackingField: {fileID: 1329074111}
+    <speed>k__BackingField: 2
     _secondsToMaxSpeed: 0.33
     _secondsToStop: 0.33
-    _rigidbody: {fileID: 1329074111}
+  <animator>k__BackingField:
+    _direction: 1
+    _animator: {fileID: 1657188290}
 --- !u!114 &1329074119
 MonoBehaviour:
   m_ObjectHideFlags: 0

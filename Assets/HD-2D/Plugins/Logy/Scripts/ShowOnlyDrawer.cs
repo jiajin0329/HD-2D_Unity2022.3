@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEditor;
-using System.Text;
 
+#if UNITY_EDITOR
 [CustomPropertyDrawer(typeof(ShowOnlyAttribute))]
 public class ShowOnlyDrawer: PropertyDrawer {
     public override void OnGUI(Rect _position, SerializedProperty _property, GUIContent _label) {
@@ -24,6 +24,9 @@ public class ShowOnlyDrawer: PropertyDrawer {
             case SerializedPropertyType.Vector3:
                 StringBuilder.Set(_property.vector3IntValue.ToString());
                 break;
+            case SerializedPropertyType.Enum:
+                StringBuilder.Set(_property.enumDisplayNames[_property.enumValueIndex]);
+                break;
             default:
                 StringBuilder.Set("(not supported)");
                 break;
@@ -31,3 +34,4 @@ public class ShowOnlyDrawer: PropertyDrawer {
         EditorGUI.LabelField(_position, _label.text, StringBuilder.instance.ToString());
     }
 }
+#endif
