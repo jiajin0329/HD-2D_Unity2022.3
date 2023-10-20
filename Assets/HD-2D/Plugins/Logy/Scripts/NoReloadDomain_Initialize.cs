@@ -1,31 +1,32 @@
 using UnityEngine;
 using UnityEditor;
 
-public class NoReloadDomain_Initialize<T> : Cache {
+public class NoReloadDomain_ExitingPlayModeInitialize<T> : Cache {
     static bool _initializeEvent;
     protected override void Awake() {
         base.Awake();
         if(_initializeEvent)
             return;
         _initializeEvent = true;
+
         #if UNITY_EDITOR
-        EditorApplication.playModeStateChanged += InitializeEvent;
+        EditorApplication.playModeStateChanged += ExitingPlayModeInitializeEvent;
         #endif
     }
 
     #if UNITY_EDITOR
-    void InitializeEvent(PlayModeStateChange _stateChange) {
-        if (_stateChange != PlayModeStateChange.ExitingEditMode)
+    void ExitingPlayModeInitializeEvent(PlayModeStateChange _stateChange) {
+        if (_stateChange != PlayModeStateChange.ExitingPlayMode)
             return;
         
-        Initialize();
+        ExitingPlayModeInitialize();
 
-        EditorApplication.playModeStateChanged -= InitializeEvent;
+        EditorApplication.playModeStateChanged -= ExitingPlayModeInitializeEvent;
         Debug.Log($"{typeof(T).Name} Initialized");
     }
     #endif
     
-    protected virtual void Initialize() {
+    protected virtual void ExitingPlayModeInitialize() {
         _initializeEvent = false;
     }
 }

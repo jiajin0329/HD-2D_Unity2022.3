@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SingletonMonoBehaviour<T> : NoReloadDomain_Initialize<T> where T : SingletonMonoBehaviour<T> {
+public class SingletonMonoBehaviour<T> : NoReloadDomain_ExitingPlayModeInitialize<T> where T : SingletonMonoBehaviour<T> {
     static T _instance;
     public static T instance {
         get {
